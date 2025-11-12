@@ -14,24 +14,31 @@
 
 ## HTTP Request Message
 ```
-Start Line    |<Method> <Request-URI> <HTTP-Version>  |  EX    GET /index.html HTTP/1.1
-Headers Block |<Header-Name>: <Header-Value>          |  AM    Host: www.example.com
-              |            ...                        |  PL    User-Agent: Mozilla/5.0
-              |<Header-Name>: <Header-Value>          |  E     
-Entity Body   |<Optional-Body>                        |  ->    User-Agent: Mozilla/5.0
+STRUCTURE                                                    EXAMPLE
+__________________________________________________________  ______________________________
+|  Start Line    |<Method> <Request-URI> <HTTP-Version>  |  |  GET /index.html HTTP/1.1  |
+|  Headers Block |<Header-Name>: <Header-Value>          |  |  Host: www.example.com     |
+|                |            ...                        |  |  User-Agent: Mozilla/5.0   |
+|                |<Header-Name>: <Header-Value>          |  |                            |
+|  Entity Body   |<Optional-Body>                        |  |  Accept: text/html         |
+——————————————————————————————————————————————————————————  ——————————————————————————————
 ```
 
 Accept: text/html
 
 
 - **Start Line** – specifies:
-  - The **HTTP method** (GET, POST, etc.)  
-  - The **target resource** (URL/path)  
-  - The **HTTP version**  
-- **Headers Block** – additional metadata such as:
-  - Content type (`Content-Type`)  
-  - Authentication (`Authorization`)  
-  - Caching instructions, cookies, etc.  
+  - The `<Method>` (GET, POST, etc.)  
+  - The `<Request-URI>` (URL/path)  
+  - The `<HTTP-Version>` 
+- **Headers Block** – additional metadata (some of them are optional) such as:
+  
+| **Header-Name** | **Header-Value** |
+|------------------|------------------|
+| Content-Type | application/json |
+| Accept | application/json |
+| ... | ... |
+
 - **Entity Body (optional)** – data sent to the server, e.g., login credentials, file uploads.
 
 
@@ -45,10 +52,23 @@ Accept: text/html
 - **Headers Block** – metadata about the response, e.g., content type, caching, server info.  
 - **Entity Body (optional)** – the content returned by the server, e.g., HTML page, JSON data.
 
-
-
-
+```
+STRUCTURE                                                    EXAMPLE
+___________________________________________________________________  ______________________________
+|    Start Line  | <HTTP-Version> |<Status-Code> <Reason-Phrase>  |  |  GET /index.html HTTP/1.1  |
+|  Headers Block |<Header-Name>: <Header-Value>                   |  |  Host: www.example.com     |
+|                |            ...                                 |  |  User-Agent: Mozilla/5.0   |
+|                |<Header-Name>: <Header-Value>                   |  |                            |
+|  Entity Body   |<Optional-Body>                                 |  |  Accept: text/html         |
+———————————————————————————————————————————————————————————————————  ——————————————————————————————
+```
 ---
+
+| **Header-Name** | **Header-Value** |
+|------------------|------------------|
+| Content-Type | application/json |
+| Accept | application/json |
+| ... | ... |
 
 ## Key Notes
 - Not all headers are used by both requests and responses.  
