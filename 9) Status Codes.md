@@ -62,3 +62,14 @@ The server failed to process a valid request.
 | **502 Bad Gateway** | Invalid response from upstream server. |
 | **503 Service Unavailable** | Server overloaded or down for maintenance. |
 | **504 Gateway Timeout** | Upstream server did not respond in time. |
+
+## Handling HTTP Status Codes in Frontend
+
+```bash
+const res = await fetch("/api/users/123");
+
+if (res.ok) {
+    console.log("Success:", res.status);
+}
+```
+
